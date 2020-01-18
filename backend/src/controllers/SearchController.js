@@ -3,13 +3,12 @@ const Dev = require('../models/Dev');
 
 module.exports = {
   async index(request, response) {
-    console.log(request.query);
     const { latitude, longitude, techs } = request.query;
     const techsArray = parseStringAsArray(techs);
     const devs = await Dev.find({
       // Filter by technology
       techs: {
-        $in: techsArray,
+        $in: techsArray[0] !== '' ? techsArray : ['Javascript', 'ReactJS'],
       },
       // Filter by location
       location: {
@@ -18,7 +17,7 @@ module.exports = {
             type: 'Point',
             coordinates: [longitude, latitude],
           },
-          $maxDistance: 10000,
+          $maxDistance: 50000,
         },
       },
     });

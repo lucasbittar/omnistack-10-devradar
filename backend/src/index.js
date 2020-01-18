@@ -1,9 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const http = require('http');
 const routes = require('./routes');
+const { setupWebsocket } = require('./websocket');
 
 const app = express();
+const server = http.Server(app);
+
+setupWebsocket(server);
 
 const databaseUri =
   'mongodb+srv://lucasbittar:KYHSl8aCEHPQvLfA@cluster0-1c7mw.mongodb.net/week10?retryWrites=true&w=majority';
@@ -29,7 +34,9 @@ app.use(express.json());
 app.use(routes);
 
 const port = 3333;
-app.listen(port, () => console.log(`Server ready at http://localhost:${port}`));
+server.listen(port, () =>
+  console.log(`Server ready at http://localhost:${port}`)
+);
 
 // HTTP Methods: get, post, put, delete
 
@@ -39,4 +46,3 @@ app.listen(port, () => console.log(`Server ready at http://localhost:${port}`));
 // Body: request.body (create or change data)
 
 // MongoDB (non-relational)
-
