@@ -22,7 +22,7 @@ yarn dev
 ```
 
 ## Setup front-end
-Change directory to the front-end folder `cd frontend` and run `yarn install`.
+Change directory to the front-end folder `cd web` and run `yarn install`.
 
 - Start server
 ```
