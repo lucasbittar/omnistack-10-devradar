@@ -4,6 +4,7 @@ import './style.css';
 
 function DevItem(props) {
   const { dev } = props;
+  const firstName = dev.name ? dev.name.split(' ')[0] : 'User';
   return (
     <li className="dev-item">
       <header>
@@ -15,7 +16,7 @@ function DevItem(props) {
       </header>
       <p>{dev.bio}</p>
       <a href={`https://github.com/${dev.github_username}`}>
-        Acessar perfil no GitHub
+        {firstName}'s Github Page
       </a>
     </li>
   );

@@ -118,7 +118,7 @@ function Main({ navigation }) {
       <View style={styles.searchForm}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Buscar devs por techs..."
+          placeholder="Search by technology..."
           placeholderTextColor="#999"
           autoCapitalize="words"
           value={techs}
